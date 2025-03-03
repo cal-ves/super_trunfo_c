@@ -8,20 +8,20 @@ void separador()
 int main()
 {
     // Declaração das variáveis para a Carta 1
-    char estado1;                      // Armazena a letra do estado (A-H)
-    char nomeCidade1[50];              // Array para armazenar o nome da cidade (até 49 caracteres)
-    char codigoCidade1[3];             // Array para armazenar o código da cidade (2 dígitos)
-    unsigned int populacao1;           // Armazena a população da cidade
-    int pontoTuristicos1, superPoder1; // Armazena o número de pontos turísticos
-    float area1, pib1;                 // Armazena área e PIB da cidade
+    char estado1;                                                  // Armazena a letra do estado (A-H)
+    char nomeCidade1[50];                                          // Array para armazenar o nome da cidade (até 49 caracteres)
+    char codigoCidade1[3];                                         // Array para armazenar o código da cidade (2 dígitos)
+    unsigned int populacao1;                                       // Armazena a população da cidade
+    int pontoTuristicos1, superPoder1;                             // Armazena o número de pontos turísticos
+    float area1, pib1, densidade1, pibCapta1, densidadeInvertida1; // Armazena área e PIB da cidade
 
     // Declaração das variáveis para a Carta 2 (mesma estrutura da Carta 1)
-    char estado2;                      // Armazena a letra do estado (A-H)
-    char nomeCidade2[50];              // Array para armazenar o nome da cidade (até 49 caracteres)
-    char codigoCidade2[3];             // Array para armazenar o código da cidade (2 dígitos)
-    unsigned int populacao2;           // Armazena a população da cidade
-    int pontoTuristicos2, superPoder2; // Armazena o número de pontos turísticos
-    float area2, pib2;                 // Armazena área e PIB da cidade
+    char estado2;                                                  // Armazena a letra do estado (A-H)
+    char nomeCidade2[50];                                          // Array para armazenar o nome da cidade (até 49 caracteres)
+    char codigoCidade2[3];                                         // Array para armazenar o código da cidade (2 dígitos)
+    unsigned int populacao2;                                       // Armazena a população da cidade
+    int pontoTuristicos2, superPoder2;                             // Armazena o número de pontos turísticos
+    float area2, pib2, densidade2, pibCapta2, densidadeInvertida2; // Armazena área e PIB da cidade
 
     // Entrada de dados para a Carta 1
     printf("Digite os dados da Carta 1:\n");
@@ -65,9 +65,9 @@ int main()
     separador();
 
     // Exibição dos dados da Carta 1
-    float densidade1 = (float)populacao1 / area1; // Cálculo da densidade populacional
-    float densidadeInvertida1 = 1 / densidade1;
-    float pibCapta1 = (float)pib1 / populacao1; // Cálculo do PIB per capita
+    densidade1 = (float)populacao1 / area1; // Cálculo da densidade populacional
+    densidadeInvertida1 = 1 / densidade1;
+    pibCapta1 = (float)pib1 / populacao1; // Cálculo do PIB per capita
     superPoder1 = populacao1 + area1 + pib1 + pontoTuristicos1 + pibCapta1 + densidadeInvertida1;
 
     printf("Carta 1: ");
@@ -85,9 +85,9 @@ int main()
     separador();
 
     // Exibição dos dados da Carta 2 (similar à Carta 1)
-    float densidade2 = (float)populacao2 / area2; // Cálculo da densidade populacional
+    densidade2 = (float)populacao2 / area2; // Cálculo da densidade populacional
     float densidadeInvertida2 = 1 / densidade2;
-    float pibCapta2 = (float)pib2 / populacao2; // Cálculo do PIB per capita
+    pibCapta2 = (float)pib2 / populacao2; // Cálculo do PIB per capita
     superPoder2 = populacao2 + area2 + pib2 + pontoTuristicos2 + pibCapta2 + densidadeInvertida2;
 
     printf("Carta 2: ");
@@ -105,12 +105,17 @@ int main()
     separador();
 
     // Comparação entre as cartas
-    printf("Comparação das Cartas:\n");
-    (populacao1 > populacao2 ? printf("População: Carta 1 venceu (%d)\n", populacao1 > populacao2) : printf("População: Carta 2 venceu (%d)\n", populacao1 > populacao2));
-    (area1 > area2 ? printf("População: Carta 1 venceu (%d)\n", area1 > area2) : printf("População: Carta 2 venceu (%d)\n", area1 > area2));
-    (pib1 > pib2 ? printf("População: Carta 1 venceu (%d)\n", pib1 > pib2) : printf("População: Carta 2 venceu (%d)\n", pib1 > pib2));
-    (pontoTuristicos1 > pontoTuristicos2 ? printf("População: Carta 1 venceu (%d)\n", pontoTuristicos1 > pontoTuristicos2) : printf("População: Carta 2 venceu (%d)\n", pontoTuristicos1 > pontoTuristicos2));
-    (densidade1 < densidade2 ? printf("População: Carta 1 venceu (%d)\n", densidade1 < densidade2) : printf("População: Carta 2 venceu (%d)\n", densidade1 < densidade2));
-    (pibCapta1 > pibCapta2 ? printf("População: Carta 1 venceu (%d)\n", pibCapta1 > pibCapta2) : printf("População: Carta 2 venceu (%d)\n", pibCapta1 > pibCapta2));
-    (superPoder1 > superPoder2 ? printf("População: Carta 1 venceu (%d)\n", superPoder1 > superPoder2) : printf("População: Carta 2 venceu (%d)\n", superPoder1 > superPoder2));
+    printf("Comparação das Cartas (Atributo: População)\n");
+    if (populacao1 > populacao2)
+    {
+        printf("%s (%c%s): %d", nomeCidade1, estado1, codigoCidade1, populacao1);
+        printf("%s (%c%s): %d", nomeCidade2, estado2, codigoCidade2, populacao2);
+        printf("Carta 1 (%s) venceu!", nomeCidade1);
+    }
+    else
+    {
+        printf("%s (%c%s): %d", nomeCidade1, estado1, codigoCidade1, populacao1);
+        printf("%s (%c%s): %d", nomeCidade2, estado2, codigoCidade2, populacao2);
+        printf("Carta 2 (%s) venceu!", nomeCidade2);
+    }
 }
